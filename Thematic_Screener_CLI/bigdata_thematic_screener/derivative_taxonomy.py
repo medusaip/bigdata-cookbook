@@ -5,9 +5,9 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from src.helpers import build_leaf_ancestry, get_leaf_labels, get_leaf_pairs
-from src.prompts import DERIVATIVE_BRANCH_LABELS
-from src.search_query import has_exposure_meta_language
+from bigdata_thematic_screener.helpers import build_leaf_ancestry, get_leaf_labels, get_leaf_pairs
+from bigdata_thematic_screener.prompts import DERIVATIVE_BRANCH_LABELS
+from bigdata_thematic_screener.search_query import has_exposure_meta_language
 
 _TOKEN_PATTERN = re.compile(r"[a-z0-9]+", re.IGNORECASE)
 _NEAR_DUPLICATE_JACCARD = 0.55

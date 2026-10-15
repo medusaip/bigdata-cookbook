@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from src.modes import get_profile
-from src.screener import Node, _labeling_prompt_labels, _labeling_system_prompt
+from bigdata_thematic_screener.modes import get_profile
+from bigdata_thematic_screener.screener import Node, _labeling_prompt_labels, _labeling_system_prompt
 
 
 def test_risk_labeling_prompt_uses_label_summary_pairs() -> None:

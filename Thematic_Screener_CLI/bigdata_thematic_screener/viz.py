@@ -14,9 +14,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.figure import Figure
 
-from src.derivative_taxonomy import leaf_branch_map, leaves_by_derivative_branch
-from src.helpers import get_leaf_labels
-from src.prompts import DERIVATIVE_BRANCH_LABELS
+from bigdata_thematic_screener.derivative_taxonomy import leaf_branch_map, leaves_by_derivative_branch
+from bigdata_thematic_screener.helpers import get_leaf_labels
+from bigdata_thematic_screener.prompts import DERIVATIVE_BRANCH_LABELS
 
 HOP_COLORS: dict[str, str] = {
     DERIVATIVE_BRANCH_LABELS[0]: "#12496b",

@@ -15,20 +15,20 @@ import pandas as pd
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from src import screener
-from src.derivative_grounding import collect_grounding, format_grounding_brief, write_grounding
-from src.derivative_taxonomy import derivative_preview, validate_derivatives_taxonomy
-from src.modes import AnalysisMode, get_profile
-from src.openai_parallel import sampling_params_for_model
-from src.prompts import (
+from bigdata_thematic_screener import screener
+from bigdata_thematic_screener.derivative_grounding import collect_grounding, format_grounding_brief, write_grounding
+from bigdata_thematic_screener.derivative_taxonomy import derivative_preview, validate_derivatives_taxonomy
+from bigdata_thematic_screener.modes import AnalysisMode, get_profile
+from bigdata_thematic_screener.openai_parallel import sampling_params_for_model
+from bigdata_thematic_screener.prompts import (
     SYSTEM_PROMPT_LABELING,
     TAXONOMY_STYLE_DERIVATIVES,
     TAXONOMY_STYLE_EXPOSURE,
 )
-from src.retrieval_budget import DEFAULT_RETRIEVAL_PRESETS
-from src.run_context import RunContext
-from src.screener import _company_evidence_block, _company_summary_system_prompt
-from src.search_query import has_exposure_meta_language
+from bigdata_thematic_screener.retrieval_budget import DEFAULT_RETRIEVAL_PRESETS
+from bigdata_thematic_screener.run_context import RunContext
+from bigdata_thematic_screener.screener import _company_evidence_block, _company_summary_system_prompt
+from bigdata_thematic_screener.search_query import has_exposure_meta_language
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RUNS_ROOT = PROJECT_ROOT / "runs"

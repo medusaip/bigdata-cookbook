@@ -1,5 +1,5 @@
 [project]
-name = "thematic-screener-cli"
+name = "bigdata-thematic-screener"
 version = "0.1.0"
 description = "Thematic screener CLI and MCP server"
 requires-python = ">=3.11"
@@ -12,12 +12,11 @@ dependencies = [
     "pydantic>=2.0.0,<3.0.0",
     "python-dotenv>=1.0.0",
     "tqdm>=4.66.0,<5.0.0",
-    "snowflake-connector-python>=3.0",
 ]
 
 [project.scripts]
-screener = "src.cli:main"
-thematic-screener-mcp = "src.mcp_server:main"
+screener = "bigdata_thematic_screener.cli:main"
+thematic-screener-mcp = "bigdata_thematic_screener.mcp_server:main"
 
 [dependency-groups]
 dev = [
@@ -33,7 +32,7 @@ jupyter = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["src*"]
+include = ["bigdata_thematic_screener*"]
 
 [tool.ruff]
 line-length = 100

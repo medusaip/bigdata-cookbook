@@ -9,11 +9,11 @@ import pandas as pd
 
 matplotlib.use("Agg")
 
-from src import viz  # noqa: E402
-from src.derivative_taxonomy import leaf_branch_map  # noqa: E402
-from src.notebook_support import quiet_output  # noqa: E402
-from src.prompts import DERIVATIVE_BRANCH_LABELS  # noqa: E402
-from src.screener import Node  # noqa: E402
+from bigdata_thematic_screener import viz  # noqa: E402
+from bigdata_thematic_screener.derivative_taxonomy import leaf_branch_map  # noqa: E402
+from bigdata_thematic_screener.notebook_support import quiet_output  # noqa: E402
+from bigdata_thematic_screener.prompts import DERIVATIVE_BRANCH_LABELS  # noqa: E402
+from bigdata_thematic_screener.screener import Node  # noqa: E402
 
 CHART_BUILDERS = (
     viz.plot_hop_coverage,

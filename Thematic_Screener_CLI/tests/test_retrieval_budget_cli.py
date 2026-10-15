@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from src.retrieval_budget import (
+from bigdata_thematic_screener.retrieval_budget import (
     build_retrieval_preset_rows,
     estimate_retrieval_cost_usd,
     format_retrieval_budget_report,

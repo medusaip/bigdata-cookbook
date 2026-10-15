@@ -20,7 +20,7 @@ import pandas as pd
 from bigdata_smart_batching import deduplicate_documents, execute_search, plan_search
 from dotenv import load_dotenv
 
-from src.screener import DEFAULT_END_DATE, DEFAULT_SEARCH_CATEGORY, DEFAULT_START_DATE
+from bigdata_thematic_screener.screener import DEFAULT_END_DATE, DEFAULT_SEARCH_CATEGORY, DEFAULT_START_DATE
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_UNIVERSE = PROJECT_ROOT / "XNAS_companies.csv"

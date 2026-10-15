@@ -24,8 +24,8 @@ NOISY_LOGGERS: tuple[str, ...] = (
     "httpx",
     "matplotlib",
     "openai",
-    "src.derivative_grounding",
-    "src.screener",
+    "bigdata_thematic_screener.derivative_grounding",
+    "bigdata_thematic_screener.screener",
 )
 
 

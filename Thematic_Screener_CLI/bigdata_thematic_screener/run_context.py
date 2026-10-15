@@ -189,15 +189,15 @@ class RunContext:
             return queries
 
         if self.taxonomy_tree_path.exists():
-            from src.helpers import get_leaf_search_queries
-            from src.screener import Node
+            from bigdata_thematic_screener.helpers import get_leaf_search_queries
+            from bigdata_thematic_screener.screener import Node
 
             root = Node.model_validate_json(self.taxonomy_tree_path.read_text(encoding="utf-8"))
             queries = get_leaf_search_queries(root)
             if len(queries) == len(labels):
                 return queries
 
-        from src.search_query import normalize_summary_to_search_query
+        from bigdata_thematic_screener.search_query import normalize_summary_to_search_query
 
         return [normalize_summary_to_search_query(label) for label in labels]
 

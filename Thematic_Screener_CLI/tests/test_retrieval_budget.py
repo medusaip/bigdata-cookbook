@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from src.mcp_workflow import (
+from bigdata_thematic_screener.mcp_workflow import (
     RETRIEVAL_CHUNKS_PER_COST_UNIT,
     RETRIEVAL_COST_USD_PER_UNIT,
     _estimate_retrieval_cost_usd,

@@ -7,7 +7,7 @@ from datetime import date
 import pandas as pd
 import pytest
 
-from src.theme_timeseries import (
+from bigdata_thematic_screener.theme_timeseries import (
     add_attention_metrics,
     build_company_exposure_daily,
     build_exposure_aggregate_daily,

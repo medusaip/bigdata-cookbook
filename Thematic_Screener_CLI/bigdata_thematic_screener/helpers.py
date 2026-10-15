@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Protocol
 
-from src.search_query import normalize_summary_to_search_query
+from bigdata_thematic_screener.search_query import normalize_summary_to_search_query
 
 if TYPE_CHECKING:
-    from src.screener import Node
+    from bigdata_thematic_screener.screener import Node
 
 
 class _TaxonomyNode(Protocol):

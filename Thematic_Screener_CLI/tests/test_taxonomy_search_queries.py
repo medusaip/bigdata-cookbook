@@ -10,9 +10,9 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from src.helpers import get_leaf_labels, get_leaf_pairs, get_leaf_search_queries
-from src.run_context import RunContext
-from src.screener import (
+from bigdata_thematic_screener.helpers import get_leaf_labels, get_leaf_pairs, get_leaf_search_queries
+from bigdata_thematic_screener.run_context import RunContext
+from bigdata_thematic_screener.screener import (
     EXCEL_MAX_CELL_CHARS,
     EXCEL_TRUNCATION_NOTICE,
     Node,
@@ -22,7 +22,7 @@ from src.screener import (
     normalize_max_leaf_labels,
     write_taxonomy_artifacts,
 )
-from src.search_query import has_exposure_meta_language, normalize_summary_to_search_query
+from bigdata_thematic_screener.search_query import has_exposure_meta_language, normalize_summary_to_search_query
 
 
 def _sample_tree() -> Node:
@@ -132,8 +132,8 @@ def test_build_plans_uses_search_query_text(monkeypatch: pytest.MonkeyPatch, tmp
         captured_texts.append(str(kwargs["text"]))
         return {"baskets": [{"query": {"text": kwargs["text"]}, "expected_chunks": 1}]}
 
-    monkeypatch.setattr("src.screener.plan_search", fake_plan_search)
-    monkeypatch.setattr("src.screener.save_plan", lambda plan, path: None)
+    monkeypatch.setattr("bigdata_thematic_screener.screener.plan_search", fake_plan_search)
+    monkeypatch.setattr("bigdata_thematic_screener.screener.save_plan", lambda plan, path: None)
 
     build_plans(
         labels=["Cooling suppliers"],
@@ -151,9 +151,9 @@ def test_build_plans_removes_plans_from_a_previous_taxonomy(
     def fake_plan_search(**kwargs: object) -> dict[str, list[dict[str, object]]]:
         return {"baskets": [{"query": {"text": kwargs["text"]}, "expected_chunks": 1}]}
 
-    monkeypatch.setattr("src.screener.plan_search", fake_plan_search)
+    monkeypatch.setattr("bigdata_thematic_screener.screener.plan_search", fake_plan_search)
     monkeypatch.setattr(
-        "src.screener.save_plan",
+        "bigdata_thematic_screener.screener.save_plan",
         lambda plan, path: Path(path).write_text("{}", encoding="utf-8"),
     )
     stale_plan = tmp_path / "Retired_pathway.json"

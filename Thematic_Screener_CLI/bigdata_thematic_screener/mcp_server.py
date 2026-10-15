@@ -10,7 +10,7 @@ from typing import Any
 
 from mcp.server.fastmcp import FastMCP
 
-from src import mcp_workflow
+from bigdata_thematic_screener import mcp_workflow
 
 SERVER_NAME = "thematic-screener"
 

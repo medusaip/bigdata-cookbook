@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from src.notebook_support import QUOTE_TRUNCATION_MARKER, preview_quote
+from bigdata_thematic_screener.notebook_support import QUOTE_TRUNCATION_MARKER, preview_quote
 
 
 def test_preview_quote_keeps_short_passages_intact() -> None:

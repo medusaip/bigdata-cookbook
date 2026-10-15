@@ -20,7 +20,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 
-from src.prompts import (
+from bigdata_thematic_screener.prompts import (
     RISK_SUMMARY_TEMPLATE,
     SYSTEM_MESSAGE_LABELS,
     SYSTEM_MESSAGE_RISK,

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from src.screener import analyst_focus_with_leaf_cap, normalize_max_leaf_labels
+from bigdata_thematic_screener.screener import analyst_focus_with_leaf_cap, normalize_max_leaf_labels
 
 
 def test_analyst_focus_with_leaf_cap_appends_instruction() -> None:

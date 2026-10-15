@@ -8,12 +8,11 @@ from collections.abc import Callable, Sequence
 from datetime import UTC, date, datetime, timedelta
 from typing import Any, TypeAlias
 
-import snowflake.connector
 from openai import OpenAI
 from pydantic import BaseModel, Field
 
-from src.derivative_grounding import retrieve_theme_chunks_http
-from src.openai_parallel import sampling_params_for_model
+from bigdata_thematic_screener.derivative_grounding import retrieve_theme_chunks_http
+from bigdata_thematic_screener.openai_parallel import sampling_params_for_model
 
 DEFAULT_DISCOVERY_MODEL = "gpt-5.6-luna"
 DEFAULT_GROUNDING_DAYS = 30
@@ -123,7 +122,20 @@ class ThemeCandidateList(BaseModel):
 
 
 def get_snowflake_connection() -> Any:
-    """Create a Snowflake connection from environment variables."""
+    """Create a Snowflake connection from environment variables.
+
+    ``snowflake-connector-python`` is optional in the Medusa fork: it is only
+    needed for macro-event discovery, so it is imported here rather than at
+    module import time.
+    """
+    try:
+        import snowflake.connector
+    except ImportError as exc:
+        raise ImportError(
+            "Trending-theme discovery reads macro events from Snowflake and needs the "
+            "`snowflake-connector-python` package. Install it with "
+            "`pip install snowflake-connector-python`."
+        ) from exc
     return snowflake.connector.connect(
         account=os.environ["SNOWFLAKE_ACCOUNT"],
         user=os.environ["SNOWFLAKE_USER"],

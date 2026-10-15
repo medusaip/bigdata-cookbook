@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from src.derivative_grounding import collect_grounding, format_grounding_brief
-from src.derivative_taxonomy import derivative_preview, validate_derivatives_taxonomy
-from src.prompts import (
+from bigdata_thematic_screener.derivative_grounding import collect_grounding, format_grounding_brief
+from bigdata_thematic_screener.derivative_taxonomy import derivative_preview, validate_derivatives_taxonomy
+from bigdata_thematic_screener.prompts import (
     SYSTEM_MESSAGE_LABELS,
     SYSTEM_MESSAGE_LABELS_DERIVATIVES,
     SYSTEM_PROMPT_LABELING,
     TAXONOMY_STYLE_DERIVATIVES,
 )
-from src.screener import Node, load_universe
+from bigdata_thematic_screener.screener import Node, load_universe
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TSX_UNIVERSE = PROJECT_ROOT / "tsx_top150_rp_entities.csv"

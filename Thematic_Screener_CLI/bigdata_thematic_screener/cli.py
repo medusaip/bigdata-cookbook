@@ -13,8 +13,8 @@ into an isolated run directory (``runs/<run_name>/``):
 
 Run with, e.g.::
 
-    python -m src.cli run-all --run-name my_run
-    python -m src.cli generate-labels --main-theme "..." --analyst-focus "..."
+    python -m bigdata_thematic_screener.cli run-all --run-name my_run
+    python -m bigdata_thematic_screener.cli generate-labels --main-theme "..." --analyst-focus "..."
 """
 
 from __future__ import annotations
@@ -30,13 +30,13 @@ from typing import Any
 import pandas as pd
 from dotenv import load_dotenv
 
-from src import screener
-from src.derivative_grounding import collect_grounding, format_grounding_brief, write_grounding
-from src.derivative_taxonomy import derivative_preview, validate_derivatives_taxonomy
-from src.modes import AnalysisMode, get_profile
-from src.prompts import TAXONOMY_STYLE_DERIVATIVES, TAXONOMY_STYLE_EXPOSURE
-from src.retrieval_budget import build_retrieval_preset_rows, format_retrieval_budget_report
-from src.run_context import RunContext
+from bigdata_thematic_screener import screener
+from bigdata_thematic_screener.derivative_grounding import collect_grounding, format_grounding_brief, write_grounding
+from bigdata_thematic_screener.derivative_taxonomy import derivative_preview, validate_derivatives_taxonomy
+from bigdata_thematic_screener.modes import AnalysisMode, get_profile
+from bigdata_thematic_screener.prompts import TAXONOMY_STYLE_DERIVATIVES, TAXONOMY_STYLE_EXPOSURE
+from bigdata_thematic_screener.retrieval_budget import build_retrieval_preset_rows, format_retrieval_budget_report
+from bigdata_thematic_screener.run_context import RunContext
 
 logger = logging.getLogger("screener.cli")
 

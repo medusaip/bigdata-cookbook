@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from src.helpers import (
+from bigdata_thematic_screener.helpers import (
     get_leaf_label_summary_options,
     get_leaf_labels,
     get_leaf_pairs,
@@ -10,7 +10,7 @@ from src.helpers import (
     get_leaf_summaries,
     print_tree,
 )
-from src.openai_parallel import (
+from bigdata_thematic_screener.openai_parallel import (
     ChatRequest,
     ChatResponse,
     OpenAIParallelError,

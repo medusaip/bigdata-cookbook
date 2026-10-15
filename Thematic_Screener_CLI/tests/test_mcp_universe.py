@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from src.mcp_workflow import (
+from bigdata_thematic_screener.mcp_workflow import (
     BUILTIN_UNIVERSE_MODES,
     _coerce_universe_input,
     _normalize_universe_dataframe,
@@ -14,7 +14,7 @@ from src.mcp_workflow import (
     create_run,
     validate_universe,
 )
-from src.screener import UNIVERSE_ID_COLUMN, load_universe
+from bigdata_thematic_screener.screener import UNIVERSE_ID_COLUMN, load_universe
 
 
 def test_coerce_bare_csv_path_string() -> None:
@@ -87,7 +87,7 @@ def test_selected_universe_prefers_explicit_over_config() -> None:
 
 def test_validate_universe_builtin_sample_xnas(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     runs_root = tmp_path / "runs"
-    monkeypatch.setattr("src.mcp_workflow.DEFAULT_RUNS_ROOT", runs_root)
+    monkeypatch.setattr("bigdata_thematic_screener.mcp_workflow.DEFAULT_RUNS_ROOT", runs_root)
 
     create_run(
         main_theme="Test theme",
@@ -102,7 +102,7 @@ def test_validate_universe_builtin_sample_xnas(tmp_path: Path, monkeypatch: pyte
 
 def test_create_run_uses_mag7_csv(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     runs_root = tmp_path / "runs"
-    monkeypatch.setattr("src.mcp_workflow.DEFAULT_RUNS_ROOT", runs_root)
+    monkeypatch.setattr("bigdata_thematic_screener.mcp_workflow.DEFAULT_RUNS_ROOT", runs_root)
 
     response = create_run(
         main_theme="Test risk",
@@ -116,7 +116,7 @@ def test_create_run_uses_mag7_csv(tmp_path: Path, monkeypatch: pytest.MonkeyPatc
 
 def test_validate_universe_string_path(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     runs_root = tmp_path / "runs"
-    monkeypatch.setattr("src.mcp_workflow.DEFAULT_RUNS_ROOT", runs_root)
+    monkeypatch.setattr("bigdata_thematic_screener.mcp_workflow.DEFAULT_RUNS_ROOT", runs_root)
 
     create_run(
         main_theme="Test risk",

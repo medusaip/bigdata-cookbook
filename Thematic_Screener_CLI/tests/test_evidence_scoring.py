@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from src.mcp_workflow import (
+from bigdata_thematic_screener.mcp_workflow import (
     MAX_TOOL_RESPONSE_BYTES,
     _cap_tool_response,
     _chunk_evidence_score,

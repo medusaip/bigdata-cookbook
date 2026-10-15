@@ -7,7 +7,7 @@ from datetime import date
 from types import SimpleNamespace
 from typing import Any
 
-from src.trending_themes import (
+from bigdata_thematic_screener.trending_themes import (
     MacroEvent,
     ThemeSeed,
     consolidate_macro_events,

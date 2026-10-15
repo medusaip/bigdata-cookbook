@@ -11,7 +11,7 @@ from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from src.prompts import DERIVATIVE_BRANCH_LABELS
+from bigdata_thematic_screener.prompts import DERIVATIVE_BRANCH_LABELS
 
 DEFAULT_START_DATE = "2025-06-01"
 DEFAULT_END_DATE = "2026-06-09"

@@ -1,5 +1,7 @@
 # Thematic Screener CLI
 
+> Medusa fork (branch `medusa`, tag `v0.1.0-medusa`): see [MEDUSA_FORK.md](MEDUSA_FORK.md) for the upstream commit and the three changes.
+
 This Thematic Screener CLI is a Beta environment that presents a Command-line tool for running a four-stage screening pipeline: generate labels, build search plans, execute document search, and label sentences with company-level summaries. It then exports the results as JSON and Excel.
 
 It leverages [Bigdata](https://bigdata.com/), [bigdata-smart-batching](https://docs.bigdata.com/use-cases/search-service/smart-batching) library and OpenAI.
@@ -105,8 +107,8 @@ uv run jupyter lab notebooks/03_trending_themes_screener.ipynb
 
 The notebook writes to `runs/tsx_oil_derivatives/`, the same layout the CLI uses, so a session
 started in the notebook can be continued from the command line and vice versa. Charts come from
-`src/viz.py` (mindmap, hop coverage, pathway and company rankings, exposure matrix, evidence
-timeline); `src/notebook_support.quiet_output` keeps planner and retrieval progress chatter out of
+`bigdata_thematic_screener/viz.py` (mindmap, hop coverage, pathway and company rankings, exposure matrix, evidence
+timeline); `bigdata_thematic_screener/notebook_support.quiet_output` keeps planner and retrieval progress chatter out of
 the rendered report.
 
 `RETRIEVAL_DEPTH` in the parameters cell controls how deeply each pathway samples its available
@@ -141,16 +143,16 @@ For Cursor, use the project skill at `.cursor/skills/thematic-screener/SKILL.md`
 
 ```bash
 # Full pipeline with defaults, uses XNAS_companies.csv
-uv run python -m src.cli run-all --run-name demo
+uv run python -m bigdata_thematic_screener.cli run-all --run-name demo
 
 # Step by step (same run directory)
-uv run python -m src.cli generate-labels --run-name demo
-uv run python -m src.cli plans --run-name demo
-uv run python -m src.cli search --run-name demo
-uv run python -m src.cli label-sentences --run-name demo
+uv run python -m bigdata_thematic_screener.cli generate-labels --run-name demo
+uv run python -m bigdata_thematic_screener.cli plans --run-name demo
+uv run python -m bigdata_thematic_screener.cli search --run-name demo
+uv run python -m bigdata_thematic_screener.cli label-sentences --run-name demo
 
 # Summarize plans if you want to verify the total chunks to be retrieved
-uv run python -m src.cli summarize-plans --run-name demo
+uv run python -m bigdata_thematic_screener.cli summarize-plans --run-name demo
 ```
 
 ## Pipeline overview
@@ -199,7 +201,7 @@ The following optional columns enrich the JSON export when present (otherwise `s
 Entry point:
 
 ```bash
-python -m src.cli <subcommand> [options]
+python -m bigdata_thematic_screener.cli <subcommand> [options]
 ```
 
 ### Common options (all subcommands)
@@ -285,7 +287,7 @@ Pricing: **$0.015 per 10 chunks** retrieved (`estimated_cost_usd = selected_chun
 Presets printed: `quick_scan` (0.5%), `balanced` (2%), `deep_dive` (5%), `full` (100% — every planned chunk).
 
 ```bash
-uv run python -m src.cli bigdata-approx-cost \
+uv run python -m bigdata_thematic_screener.cli bigdata-approx-cost \
   --run-name cost-preview-mag7 \
   --main-theme "US Government Shutdown" \
   --analyst-focus "How a prolonged federal funding lapse affects Mag7 operations and revenue" \
@@ -324,20 +326,20 @@ Runs `generate-labels` → `plans` → `search` → `label-sentences` → `expor
 
 ```bash
 # Custom theme and universe, named run
-python -m src.cli run-all \
+python -m bigdata_thematic_screener.cli run-all \
   --run-name medtech_aesthetics \
   --main-theme "AI disruption in product development" \
   --analyst-focus "How companies are including AI in their development cycle" \
   --universe ../Batch_Search_API/global_all_caps.csv
 
 # Generate labels only
-python -m src.cli generate-labels \
+python -m bigdata_thematic_screener.cli generate-labels \
   --run-name my_run \
   --main-theme "Ophthalmology medical devices" \
   --analyst-focus "Surgical and diagnostic eye care"
 
 # Derivatives mindmap on TSX Top 150 (theme-level grounding, then confirm leaf count before search)
-python -m src.cli generate-labels \
+python -m bigdata_thematic_screener.cli generate-labels \
   --run-name oil_derivatives_tsx \
   --taxonomy-style derivatives \
   --ground-with-bigdata \
@@ -346,21 +348,21 @@ python -m src.cli generate-labels \
   --universe tsx_top150_rp_entities.csv
 
 # Resume a run: plans only (reads themes.txt, search_queries.txt, and config from the run dir)
-python -m src.cli plans --run-name my_run
+python -m bigdata_thematic_screener.cli plans --run-name my_run
 
 # Summarize plans for an existing run (no API keys needed)
-python -m src.cli summarize-plans --run-name my_run
+python -m bigdata_thematic_screener.cli summarize-plans --run-name my_run
 
 # Risk-analyzer mode: full pipeline for a risk, then upload report.json to the app
-python -m src.cli run-all \
+python -m bigdata_thematic_screener.cli run-all \
   --run-name shutdown_risk \
   --mode risk-analyzer \
   --main-theme "US Government Shutdown" \
   --analyst-focus "How a prolonged federal funding lapse affects company operations and revenue"
 
 # Re-export an existing run (no API keys needed)
-python -m src.cli export-json --run-name shutdown_risk
-python -m src.cli export-excel --run-name shutdown_risk
+python -m bigdata_thematic_screener.cli export-json --run-name shutdown_risk
+python -m bigdata_thematic_screener.cli export-excel --run-name shutdown_risk
 ```
 
 ## Notes

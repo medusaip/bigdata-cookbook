@@ -1,8 +1,8 @@
 """Pipeline functions for the thematic screener.
 
 Pure building blocks with no CLI parsing or run-directory logic.
-Orchestration and persistence are handled by :mod:`src.cli` together with
-:class:`src.run_context.RunContext`.
+Orchestration and persistence are handled by :mod:`bigdata_thematic_screener.cli` together with
+:class:`bigdata_thematic_screener.run_context.RunContext`.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ from bigdata_smart_batching import (
 from openai import OpenAI
 from pydantic import BaseModel, Field
 
-from src.helpers import (
+from bigdata_thematic_screener.helpers import (
     build_leaf_ancestry,
     get_leaf_label_summary_options,
     get_leaf_labels,
@@ -36,14 +36,14 @@ from src.helpers import (
     get_leaf_summaries,
     print_tree,
 )
-from src.modes import AnalysisMode, LeafField, ModeProfile, get_profile
-from src.openai_parallel import (
+from bigdata_thematic_screener.modes import AnalysisMode, LeafField, ModeProfile, get_profile
+from bigdata_thematic_screener.openai_parallel import (
     ChatRequest,
     RateLimitConfig,
     run_chat_requests_parallel,
     sampling_params_for_model,
 )
-from src.prompts import (
+from bigdata_thematic_screener.prompts import (
     SYSTEM_MESSAGE_LABELS_DERIVATIVES,
     TAXONOMY_STYLE_DERIVATIVES,
     TAXONOMY_STYLE_EXPOSURE,

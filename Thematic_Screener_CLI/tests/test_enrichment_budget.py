@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from src.mcp_workflow import (
+from bigdata_thematic_screener.mcp_workflow import (
     DEFAULT_ENRICHMENT_MAX_CONCURRENT,
     DEFAULT_ENRICHMENT_REQUESTS_PER_MINUTE,
     ENRICHMENT_COST_SAFETY_MARGIN,

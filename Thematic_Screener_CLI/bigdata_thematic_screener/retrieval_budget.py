@@ -6,7 +6,7 @@ from typing import TypedDict
 
 import pandas as pd
 
-from src.screener import format_plans_summary
+from bigdata_thematic_screener.screener import format_plans_summary
 
 RETRIEVAL_CHUNKS_PER_COST_UNIT = 10
 RETRIEVAL_COST_USD_PER_10_CHUNKS = 0.015

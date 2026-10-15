@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from src.prompts import SYSTEM_PROMPT_LABELING
-from src.screener import DEFAULT_ANALYST_FOCUS, DEFAULT_MAIN_THEME
+from bigdata_thematic_screener.prompts import SYSTEM_PROMPT_LABELING
+from bigdata_thematic_screener.screener import DEFAULT_ANALYST_FOCUS, DEFAULT_MAIN_THEME
 
 
 def test_labeling_prompt_includes_analyst_focus() -> None:

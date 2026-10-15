@@ -46,13 +46,21 @@ logger = logging.getLogger(__name__)
 Message: TypeAlias = dict[str, str]
 
 
+REASONING_MODEL_PREFIXES: tuple[str, ...] = ("gpt-5", "gpt-6", "o1", "o3", "o4")
+"""Model-name prefixes of reasoning models that take no sampling params."""
+
+
 def sampling_params_for_model(model: str, **params: Any) -> dict[str, Any]:
     """Return sampling kwargs that ``model`` accepts.
 
-    ``gpt-5.6-luna`` only supports default sampling, so temperature, top_p,
-    seed, and penalty fields are omitted for luna models.
+    Reasoning models (the ``gpt-5``/``gpt-6`` families and ``o1``/``o3``/``o4``)
+    reject ``temperature`` and ignore the other sampling fields, so nothing is
+    sent for them. Upstream's luna rule (``gpt-5.6-luna`` only supports default
+    sampling) is kept for any model name containing ``luna``.
+    Other models get the non-None params.
     """
-    if "luna" in model.lower():
+    normalized = model.strip().lower()
+    if normalized.startswith(REASONING_MODEL_PREFIXES) or "luna" in normalized:
         return {}
     return {key: value for key, value in params.items() if value is not None}
 

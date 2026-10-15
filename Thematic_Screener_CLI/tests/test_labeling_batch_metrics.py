@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from src.mcp_workflow import (
+from bigdata_thematic_screener.mcp_workflow import (
     DEFAULT_ENRICHMENT_MAX_CONCURRENT,
     MCP_LABELING_BATCH_SAFE_SECONDS,
     MCP_LABELING_WAVE_SECONDS,
@@ -10,7 +10,7 @@ from src.mcp_workflow import (
     _estimate_openai_batch_seconds,
     _resolve_labeling_straggler_seconds,
 )
-from src.screener import LabelingLatencyStats, _labeling_latency_stats
+from bigdata_thematic_screener.screener import LabelingLatencyStats, _labeling_latency_stats
 
 
 def test_labeling_latency_stats_empty() -> None:
